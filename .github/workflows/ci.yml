@@ -50,6 +50,12 @@ jobs:
       - name: Evaluate OSS triage fixture
         run: uv run --all-packages --locked chimken-lab evaluate evals/oss-triage.json
 
+      - name: Build package archives
+        run: uv build --all-packages --out-dir "${{ runner.temp }}/chimken-dist"
+
+      - name: Verify packaged licenses
+        run: uv run --all-packages --locked python scripts/check_package_archives.py "${{ runner.temp }}/chimken-dist/"*
+
   test:
     name: Tests (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest

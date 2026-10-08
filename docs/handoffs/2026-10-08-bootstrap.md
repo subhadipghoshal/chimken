@@ -1,6 +1,6 @@
 # Chimken bootstrap: consolidated agent handoff
 
-Date: 2026-10-08. This is a resumable integration checkpoint, not a completed release or a passed independent review.
+Date: 2026-10-08. Historical checkpoint at commit `64f22bd541c9aad53574246056902451740ca352`. This is a resumable integration checkpoint, not a completed release or a passed independent review.
 
 ## Current state
 
@@ -13,6 +13,7 @@ Date: 2026-10-08. This is a resumable integration checkpoint, not a completed re
 - The bootstrap code and this checkpoint have not been pushed. Remote `main` was still the original base when last checked. There is no bootstrap pull request or hosted CI result yet.
 - GitHub planning issues and repository security settings have already been updated. Those external changes are listed below.
 - Independent review stopped at an account usage limit without a final findings report. Do not treat its partial checks as approval.
+- Continuation requested: fan out two cheap-model follow-ups, with Terra handling the packaging fix and Luna auditing this handoff. These follow-ups are pending; packaging is not marked fixed, review is not marked passed, and code is not marked published.
 
 ## User intent and architecture
 
@@ -144,7 +145,16 @@ Fifteen labels describe six areas, four work types, three execution modes, and t
 
 Project 2 configuration remains blocked because the available GitHub CLI credential lacks the `project` scope. The in-app browser was signed out. No Project fields, views, item memberships, visibility, or workflows were changed. The desired configuration is documented in `docs/planning.md`.
 
-## Resume checklist
+## Continuation after the checkpoint
+
+- Terra packaging worker (Copernicus) added exact Apache license copies to both package roots and `scripts/check_package_archives.py`. All four built wheel and source archives passed its content assertion. An isolated Python 3.12 installation of both wheels passed all 18 synthetic cases outside the checkout.
+- Luna handoff auditor (Laplace) checked the seven original agent sections and local links, and clarified the historical checkpoint reference in this document and the README.
+- The primary agent assimilated those worktrees, connected archive building and license verification to CI, and passed all 53 tests, Ruff, Mypy, repository metadata and whitespace checks. Worktrees remain available for inspection.
+- Luna preflight agent (Hooke) independently confirmed 13 open issues, the original remote main commit, and the missing Project read permission. It made no external changes.
+- Fresh Terra reviewer (Popper, xhigh effort, no inherited author context) reviewed the complete original-base diff plus all working-tree additions. Verdict: no actionable findings. Independent checks passed: lock consistency, Ruff, strict Mypy, 53 tests on Python 3.14, repository policy, 18-case evaluation, all four archive licenses, and an installed-wheel smoke test outside the checkout. Hosted CI and live GitHub configuration were outside this review's verification boundary.
+- Hosted CI is pending publication. The earlier tables and checklist describe the historical checkpoint, not an assertion that the packaging omission or independent review remains unresolved.
+
+## Historical resume checklist
 
 1. Locate the primary checkout with `git worktree list`, select `bootstrap/chimken-foundation`, and inspect its status and this checkpoint before changing anything. Preserve unrelated work and retained writer worktrees.
 2. Include the repository's Apache license in both packages' build artifacts and add a focused packaging assertion. Rebuild and inspect wheels and source distributions, then repeat the installed-wheel smoke test.

@@ -22,7 +22,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for checks, the
 schemas, and [docs/architecture.md](docs/architecture.md) for boundaries.
 
 The [bootstrap handoff](docs/handoffs/2026-10-08-bootstrap.md) records the
-integrated agent work, verification, and remaining review and publication steps.
+historical integrated checkpoint, agent work, verification, and remaining
+review and publication steps.
 
 ## What Chimken is building
 
