@@ -1,8 +1,16 @@
 # Chimken bootstrap: consolidated agent handoff
 
-Date: 2026-10-08. Historical checkpoint at commit `64f22bd541c9aad53574246056902451740ca352`. This is a resumable integration checkpoint, not a completed release or a passed independent review.
+Date: 2026-10-08. This handoff preserves the historical integration checkpoint and records the verified continuation below.
 
 ## Current state
+
+- The integrated bootstrap and packaging fix are published to existing `main` at [7b41112](https://github.com/subhadipghoshal/chimken/commit/7b41112e043c6839882ab1f5fdcb729786774e96). The earlier assimilation checkpoint is [64f22bd](https://github.com/subhadipghoshal/chimken/commit/64f22bd541c9aad53574246056902451740ca352).
+- Fresh independent Terra review found no actionable findings. [Hosted CI passed](https://github.com/subhadipghoshal/chimken/actions/runs/37779614295): Quality, Python 3.12 tests, and Python 3.14 tests, including distribution license validation.
+- All original writer worktrees and the packaging/handoff follow-ups have been assimilated. Worktrees remain available for inspection. No release or package registry publication was performed.
+- All agent outcomes are recorded here, including the incomplete first review and the completed replacement review. The local baseline has 53 passing tests and 18 passing synthetic evaluation cases with no model calls.
+- Project 2 fields, views, and memberships remain pending because the current credential lacks Project permission. The 13 planning issues are live. Private vulnerability reporting, secret scanning, and push protection were reverified as enabled after publication.
+
+## Historical checkpoint at 64f22bd
 
 - Existing repository: https://github.com/subhadipghoshal/chimken
 - Existing Project: https://github.com/users/subhadipghoshal/projects/2
@@ -152,7 +160,7 @@ Project 2 configuration remains blocked because the available GitHub CLI credent
 - The primary agent assimilated those worktrees, connected archive building and license verification to CI, and passed all 53 tests, Ruff, Mypy, repository metadata and whitespace checks. Worktrees remain available for inspection.
 - Luna preflight agent (Hooke) independently confirmed 13 open issues, the original remote main commit, and the missing Project read permission. It made no external changes.
 - Fresh Terra reviewer (Popper, xhigh effort, no inherited author context) reviewed the complete original-base diff plus all working-tree additions. Verdict: no actionable findings. Independent checks passed: lock consistency, Ruff, strict Mypy, 53 tests on Python 3.14, repository policy, 18-case evaluation, all four archive licenses, and an installed-wheel smoke test outside the checkout. Hosted CI and live GitHub configuration were outside this review's verification boundary.
-- Hosted CI is pending publication. The earlier tables and checklist describe the historical checkpoint, not an assertion that the packaging omission or independent review remains unresolved.
+- Hosted CI subsequently passed after publication; see Current state above. The earlier tables and checklist describe the historical checkpoint, not an assertion that the packaging omission or independent review remains unresolved.
 
 ## Historical resume checklist
 
