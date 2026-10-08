@@ -16,6 +16,7 @@ dev = ["pytest>=8,<10", "ruff>=0.14,<1", "mypy>=1.18,<2"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-ra --import-mode=importlib"
 
 [tool.ruff]
@@ -29,4 +30,3 @@ select = ["E", "F", "I", "UP", "B"]
 python_version = "3.12"
 strict = true
 files = ["apps/lab/src", "packages/oss-triage/src"]
-

@@ -5,8 +5,29 @@ from enum import StrEnum
 
 POLICY_VERSION = "oss-triage-rules-v1"
 RISK_FLAGS = frozenset(
-    {"security", "credentials", "personal_data", "breaking_change", "dependencies",
-     "infrastructure", "unclear_ownership"}
+    {
+        "security",
+        "credentials",
+        "personal_data",
+        "breaking_change",
+        "dependencies",
+        "infrastructure",
+        "unclear_ownership",
+    }
+)
+_ISSUE_FACT_FIELDS = frozenset(
+    {
+        "schema_version",
+        "state",
+        "kind",
+        "complexity",
+        "in_scope",
+        "requirements_clear",
+        "reproducer_present",
+        "tests_available",
+        "maintainer_welcome",
+        "risk_flags",
+    }
 )
 
 
@@ -32,19 +53,25 @@ class IssueFacts:
     risk_flags: tuple[str, ...]
 
     def __post_init__(self) -> None:
-        for name, options in (
-            ("state", {"open", "closed"}),
-            ("kind", {"docs", "bug", "feature"}),
-            ("complexity", {"small", "medium", "large", "unknown"}),
+        if not isinstance(self.state, str) or self.state not in {"open", "closed"}:
+            raise ValueError("invalid state")
+        if not isinstance(self.kind, str) or self.kind not in {"docs", "bug", "feature"}:
+            raise ValueError("invalid kind")
+        if not isinstance(self.complexity, str) or self.complexity not in {
+            "small",
+            "medium",
+            "large",
+            "unknown",
+        }:
+            raise ValueError("invalid complexity")
+        for name, value in (
+            ("in_scope", self.in_scope),
+            ("requirements_clear", self.requirements_clear),
+            ("reproducer_present", self.reproducer_present),
+            ("tests_available", self.tests_available),
+            ("maintainer_welcome", self.maintainer_welcome),
         ):
-            value = getattr(self, name)
-            if not isinstance(value, str) or value not in options:
-                raise ValueError(f"invalid {name}")
-        for name in (
-            "in_scope", "requirements_clear", "reproducer_present", "tests_available",
-            "maintainer_welcome",
-        ):
-            if type(getattr(self, name)) is not bool:
+            if type(value) is not bool:
                 raise ValueError(f"{name} must be boolean")
         if not isinstance(self.risk_flags, tuple) or any(
             not isinstance(flag, str) or flag not in RISK_FLAGS for flag in self.risk_flags
@@ -53,21 +80,52 @@ class IssueFacts:
 
     @classmethod
     def from_dict(cls, value: object) -> "IssueFacts":
-        if not isinstance(value, dict) or set(value) != {
-            "schema_version", "state", "kind", "complexity", "in_scope",
-            "requirements_clear", "reproducer_present", "tests_available",
-            "maintainer_welcome", "risk_flags",
-        }:
+        if not isinstance(value, dict) or set(value) != _ISSUE_FACT_FIELDS:
             raise ValueError("issue facts require exactly the documented fields")
         if type(value["schema_version"]) is not int or value["schema_version"] != 1:
             raise ValueError("unsupported issue facts schema_version")
-        if not isinstance(value["risk_flags"], list):
+
+        state = value["state"]
+        kind = value["kind"]
+        complexity = value["complexity"]
+        in_scope = value["in_scope"]
+        requirements_clear = value["requirements_clear"]
+        reproducer_present = value["reproducer_present"]
+        tests_available = value["tests_available"]
+        maintainer_welcome = value["maintainer_welcome"]
+        risk_flags = value["risk_flags"]
+
+        if not isinstance(state, str):
+            raise ValueError("state must be a string")
+        if not isinstance(kind, str):
+            raise ValueError("kind must be a string")
+        if not isinstance(complexity, str):
+            raise ValueError("complexity must be a string")
+        if type(in_scope) is not bool:
+            raise ValueError("in_scope must be boolean")
+        if type(requirements_clear) is not bool:
+            raise ValueError("requirements_clear must be boolean")
+        if type(reproducer_present) is not bool:
+            raise ValueError("reproducer_present must be boolean")
+        if type(tests_available) is not bool:
+            raise ValueError("tests_available must be boolean")
+        if type(maintainer_welcome) is not bool:
+            raise ValueError("maintainer_welcome must be boolean")
+        if not isinstance(risk_flags, list) or any(
+            not isinstance(flag, str) for flag in risk_flags
+        ):
             raise ValueError("risk_flags must be a list")
+
         return cls(
-            state=value["state"], kind=value["kind"], complexity=value["complexity"],
-            in_scope=value["in_scope"], requirements_clear=value["requirements_clear"],
-            reproducer_present=value["reproducer_present"], tests_available=value["tests_available"],
-            maintainer_welcome=value["maintainer_welcome"], risk_flags=tuple(value["risk_flags"]),
+            state=state,
+            kind=kind,
+            complexity=complexity,
+            in_scope=in_scope,
+            requirements_clear=requirements_clear,
+            reproducer_present=reproducer_present,
+            tests_available=tests_available,
+            maintainer_welcome=maintainer_welcome,
+            risk_flags=tuple(risk_flags),
         )
 
 
@@ -94,4 +152,3 @@ def recommend(facts: IssueFacts) -> Decision:
     if not facts.tests_available:
         return Decision(Route.RESEARCH, "verification_required")
     return Decision(Route.AGENT_CANDIDATE, "bounded_candidate_pending_authorization")
-

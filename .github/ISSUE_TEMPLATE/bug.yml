@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem in Chimken.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, personal data, private repository content, or other sensitive material. Issue content is public.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest reliable sequence of steps, commands, or input.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include Python version, operating system, Chimken version or commit, and relevant dependency versions.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Include sanitized logs, tracebacks, screenshots, or a minimal fixture.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: What outcome would confirm this bug is resolved?
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: Which automated or manual checks should cover the fix?
+    validations:
+      required: true

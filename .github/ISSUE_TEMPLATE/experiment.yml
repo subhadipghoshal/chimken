@@ -1,0 +1,44 @@
+name: Experiment
+description: Propose a time- and budget-bounded experiment.
+title: "Experiment: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, personal data, private repository content, or other sensitive material. Issue content is public.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question and hypothesis
+      description: What uncertainty will this experiment reduce, and what outcome do you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Reproducible context
+      description: Provide data sources, fixture details, commands, and environment assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: Method and acceptance criteria
+      description: Describe the method, success or stop criteria, and the evidence needed to decide.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: State how you will validate the result or reproduce the experiment.
+    validations:
+      required: true
+  - type: input
+    id: budget
+    attributes:
+      label: Budget
+      description: State a maximum time, compute, and monetary cost. Use zero if no spend is expected.
+      placeholder: "Example: 4 hours, standard GitHub Actions runners, $0"
+    validations:
+      required: true

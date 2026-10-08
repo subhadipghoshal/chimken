@@ -3,16 +3,28 @@
 import argparse
 import hashlib
 import json
+import platform
 import re
 import sys
 from pathlib import Path
 from time import perf_counter
+from typing import NoReturn
 
 from chimken_oss_triage import POLICY_VERSION, IssueFacts, Route, recommend
 
 from chimken_lab import __version__
 
 MAX_INPUT_BYTES = 1_048_576
+_SUITE_FIELDS = frozenset({"schema_version", "cases"})
+_CASE_FIELDS = frozenset({"id", "facts", "expected"})
+
+
+class _SafeArgumentParser(argparse.ArgumentParser):
+    """Report invalid arguments without reflecting user-provided values."""
+
+    def error(self, _message: str) -> NoReturn:
+        self.print_usage(sys.stderr)
+        self.exit(2, f"{self.prog}: error: invalid arguments\n")
 
 
 def _unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
@@ -35,7 +47,7 @@ def _load(path: Path) -> tuple[object, str]:
 
 def evaluate(value: object, dataset_sha256: str) -> dict[str, object]:
     """Evaluate a bounded synthetic suite; a mismatch fails the command."""
-    if not isinstance(value, dict) or set(value) != {"schema_version", "cases"}:
+    if not isinstance(value, dict) or set(value) != _SUITE_FIELDS:
         raise ValueError("suite requires schema_version and cases")
     if type(value["schema_version"]) is not int or value["schema_version"] != 1:
         raise ValueError("unsupported suite schema_version")
@@ -48,7 +60,7 @@ def evaluate(value: object, dataset_sha256: str) -> dict[str, object]:
     false_candidates = 0
     started = perf_counter()
     for case in cases:
-        if not isinstance(case, dict) or set(case) != {"id", "facts", "expected"}:
+        if not isinstance(case, dict) or set(case) != _CASE_FIELDS:
             raise ValueError("case requires id, facts, and expected")
         case_id = case["id"]
         if not isinstance(case_id, str) or not re.fullmatch(r"[a-z0-9-]{1,80}", case_id):
@@ -56,27 +68,47 @@ def evaluate(value: object, dataset_sha256: str) -> dict[str, object]:
         if case_id in seen:
             raise ValueError("case ids must be unique")
         seen.add(case_id)
-        if not isinstance(case["expected"], str) or case["expected"] not in set(Route):
+        expected = case["expected"]
+        if not isinstance(expected, str) or expected not in Route:
             raise ValueError("invalid expected route")
         decision = recommend(IssueFacts.from_dict(case["facts"]))
-        passed = decision.route == case["expected"]
+        passed = decision.route == expected
         correct += passed
         false_candidates += decision.route == Route.AGENT_CANDIDATE and not passed
-        results.append({"id": case_id, "expected": case["expected"],
-                        "actual": decision.route, "reason": decision.reason, "passed": passed})
+        results.append(
+            {
+                "id": case_id,
+                "expected": expected,
+                "actual": decision.route,
+                "reason": decision.reason,
+                "passed": passed,
+            }
+        )
     return {
-        "schema_version": 1, "runner_version": __version__, "policy_version": POLICY_VERSION,
-        "dataset_sha256": dataset_sha256, "cases": results,
-        "metrics": {"total": len(cases), "correct": correct, "accuracy": correct / len(cases),
-                    "false_agent_candidates": false_candidates,
-                    "elapsed_seconds": round(perf_counter() - started, 6),
-                    "model_calls": 0, "model_cost_usd": 0},
-        "passed": correct == len(cases), "execution_authorized": False,
+        "schema_version": 1,
+        "runner_version": __version__,
+        "python_version": platform.python_version(),
+        "policy_version": POLICY_VERSION,
+        "dataset_sha256": dataset_sha256,
+        "cases": results,
+        "metrics": {
+            "total": len(cases),
+            "correct": correct,
+            "accuracy": correct / len(cases),
+            "false_agent_candidates": false_candidates,
+            "elapsed_seconds": round(perf_counter() - started, 6),
+            "model_calls": 0,
+            "model_cost_usd": 0,
+        },
+        "passed": correct == len(cases),
+        "execution_authorized": False,
     }
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Offline Chimken triage and evaluation lab")
+    parser = _SafeArgumentParser(
+        prog="chimken-lab", description="Offline Chimken triage and evaluation lab"
+    )
     parser.add_argument("command", choices=["triage", "evaluate"])
     parser.add_argument("input", type=Path, help="explicit local JSON file (maximum 1 MiB)")
     args = parser.parse_args(argv)
@@ -85,8 +117,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "triage":
             decision = recommend(IssueFacts.from_dict(value))
             result: dict[str, object] = {
-                "schema_version": 1, "policy_version": POLICY_VERSION,
-                "route": decision.route, "reason": decision.reason,
+                "schema_version": 1,
+                "policy_version": POLICY_VERSION,
+                "route": decision.route,
+                "reason": decision.reason,
                 "execution_authorized": False,
             }
         else:
@@ -104,4 +138,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

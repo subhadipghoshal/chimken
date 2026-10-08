@@ -1,0 +1,38 @@
+name: Task
+description: Propose a bounded improvement to Chimken.
+title: "Task: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, personal data, private repository content, or other sensitive material. Issue content is public.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What should change, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Reproducible context
+      description: Include commands, environment details, links, or a minimal example where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List the observable conditions for completion.
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: What checks should demonstrate the work is complete?
+    validations:
+      required: true

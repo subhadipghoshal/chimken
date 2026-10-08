@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: "0.9.3"
+
+      - name: Install workspace
+        run: uv sync --locked --all-packages
+
+      - name: Lint
+        run: uv run --all-packages --locked ruff check .
+
+      - name: Check formatting
+        run: uv run --all-packages --locked ruff format --check .
+
+      - name: Type check
+        run: uv run --all-packages --locked mypy
+
+      - name: Check repository metadata
+        run: uv run --all-packages --locked python scripts/check_repository.py
+
+      - name: Evaluate OSS triage fixture
+        run: uv run --all-packages --locked chimken-lab evaluate evals/oss-triage.json
+
+  test:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.14"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: "0.9.3"
+
+      - name: Install workspace
+        run: uv sync --locked --all-packages
+
+      - name: Run tests
+        run: uv run --all-packages --locked pytest
