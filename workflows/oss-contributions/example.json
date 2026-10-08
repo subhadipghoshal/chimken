@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "open",
+  "kind": "bug",
+  "complexity": "small",
+  "in_scope": true,
+  "requirements_clear": true,
+  "reproducer_present": true,
+  "tests_available": true,
+  "maintainer_welcome": true,
+  "risk_flags": []
+}

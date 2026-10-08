@@ -1,0 +1,12 @@
+[project]
+name = "chimken-oss-triage"
+version = "0.1.0"
+description = "Pure, deterministic OSS contribution triage recommendations"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+dependencies = []
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+

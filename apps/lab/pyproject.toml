@@ -1,0 +1,18 @@
+[project]
+name = "chimken-lab"
+version = "0.1.0"
+description = "Offline experiments and evaluation entry point for Chimken"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+dependencies = ["chimken-oss-triage==0.1.0"]
+
+[project.scripts]
+chimken-lab = "chimken_lab.cli:main"
+
+[tool.uv.sources]
+chimken-oss-triage = { workspace = true }
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+

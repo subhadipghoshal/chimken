@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "small-reproduced-bug",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "agent_candidate"
+    },
+    {
+      "id": "small-docs-fix",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "docs",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": false,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "agent_candidate"
+    },
+    {
+      "id": "closed-issue",
+      "facts": {
+        "schema_version": 1,
+        "state": "closed",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "ignore"
+    },
+    {
+      "id": "outside-watch-scope",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": false,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "ignore"
+    },
+    {
+      "id": "unclear-requirements",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": false,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "research"
+    },
+    {
+      "id": "unknown-complexity",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "unknown",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "research"
+    },
+    {
+      "id": "missing-reproducer",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": false,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "research"
+    },
+    {
+      "id": "missing-verification",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": false,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "research"
+    },
+    {
+      "id": "feature-request",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "feature",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "design"
+    },
+    {
+      "id": "large-change",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "large",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": []
+      },
+      "expected": "design"
+    },
+    {
+      "id": "maintainer-coordination",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": false,
+        "risk_flags": []
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-security",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "security"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-credentials",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "credentials"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-personal-data",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "personal_data"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-breaking-change",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "breaking_change"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-dependencies",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "dependencies"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-infrastructure",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "infrastructure"
+        ]
+      },
+      "expected": "design"
+    },
+    {
+      "id": "risk-unclear-ownership",
+      "facts": {
+        "schema_version": 1,
+        "state": "open",
+        "kind": "bug",
+        "complexity": "small",
+        "in_scope": true,
+        "requirements_clear": true,
+        "reproducer_present": true,
+        "tests_available": true,
+        "maintainer_welcome": true,
+        "risk_flags": [
+          "unclear_ownership"
+        ]
+      },
+      "expected": "design"
+    }
+  ]
+}
