@@ -1,0 +1,16 @@
+docs/handoffs/2026-10-08-bootstrap.md
+  h_d83fe04e15d646 11-16,159-163
+docs/planning.md
+  h_d83fe04e15d646 22-24,28-29,42-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "29a866a12e2c55775bd51e274da3682462b7af35",
+  "prompts": {},
+  "humans": {
+    "h_d83fe04e15d646": {
+      "author": "Subhadip Ghoshal <sghoshal.tech@gmail.com>"
+    }
+  }
+}
