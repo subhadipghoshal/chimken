@@ -1,0 +1,31 @@
+packages/oss-triage/LICENSE
+  s_0e34dd3924f98e::t_a81311fafcadda 1-201
+scripts/check_package_archives.py
+  s_0e34dd3924f98e::t_a81311fafcadda 1-66
+.github/workflows/ci.yml
+  s_0e34dd3924f98e::t_f15d734252196e 53-58
+docs/handoffs/2026-10-08-bootstrap.md
+  s_0e34dd3924f98e::t_e63e9dd2697c62 148-152,156-157
+  s_0e34dd3924f98e::t_65f8b76a4d35dc 153-155
+  s_0e34dd3924f98e::t_2fe99a4a5c128d 3,16
+apps/lab/LICENSE
+  s_0e34dd3924f98e::t_a81311fafcadda 1-201
+README.md
+  s_0e34dd3924f98e::t_2fe99a4a5c128d 25-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7b41112e043c6839882ab1f5fdcb729786774e96",
+  "prompts": {},
+  "sessions": {
+    "s_0e34dd3924f98e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11b59-d5a5-7443-a2d6-e4ca8ecadec0",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Subhadip Ghoshal <sghoshal.tech@gmail.com>"
+    }
+  }
+}
