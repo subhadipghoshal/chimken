@@ -1,0 +1,19 @@
+docs/handoffs/2026-10-08-bootstrap.md
+  s_0e34dd3924f98e::t_d0716e85ff9a96 3,7-14,163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca7e3536f39d008b7b0fb2fdecd9d11b23051d86",
+  "prompts": {},
+  "sessions": {
+    "s_0e34dd3924f98e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11b59-d5a5-7443-a2d6-e4ca8ecadec0",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Subhadip Ghoshal <sghoshal.tech@gmail.com>"
+    }
+  }
+}
