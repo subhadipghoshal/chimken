@@ -1,0 +1,86 @@
+CLAUDE.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-3
+README.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-23,27-56
+  s_0e34dd3924f98e::t_531bdb536e1c24 24-26
+docs/contracts/oss-triage.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-42
+packages/AGENTS.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-3
+scripts/check_repository.py
+  s_0e34dd3924f98e::t_2898ffd51adb79 1-167
+docs/adr/003-evaluations-and-bounded-autonomy.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-9
+evals/AGENTS.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-3
+pyproject.toml
+  s_0e34dd3924f98e::t_251498dd8c18eb 19
+.github/ISSUE_TEMPLATE/experiment.yml
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-44
+docs/architecture.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-47
+docs/adr/002-runnable-offline-baseline-and-reuse.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-9
+experiments/README.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-19
+docs/adr/001-modular-monorepo-and-data-boundary.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-9
+SECURITY.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-15
+packages/oss-triage/src/chimken_oss_triage/policy.py
+  s_0e34dd3924f98e::t_878422780afa8f 8-30,56-72,74,83,87-116,118,120-128
+tests/test_architecture.py
+  s_0e34dd3924f98e::t_2898ffd51adb79 1-24
+apps/lab/src/chimken_lab/cli.py
+  s_0e34dd3924f98e::t_878422780afa8f 6,11,18-27,50,63,71-72,75,78-86,88-104,109-111,120-123
+.github/workflows/ci.yml
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-81
+apps/AGENTS.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-3
+docs/planning.md
+  s_0e34dd3924f98e::t_c8a30d8e7e440e 1-42
+AGENTS.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-11
+tests/test_repository_check.py
+  s_0e34dd3924f98e::t_2898ffd51adb79 1-118
+workflows/oss-contributions/README.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-9
+.github/ISSUE_TEMPLATE/task.yml
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-38
+docs/handoffs/2026-10-08-bootstrap.md
+  s_0e34dd3924f98e::t_531bdb536e1c24 1-109,111-168
+  s_0e34dd3924f98e::t_94793b66f41727 110
+.github/pull_request_template.md
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-24
+evals/README.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-19
+tests/test_cli.py
+  s_0e34dd3924f98e::t_2898ffd51adb79 1-5,7-32,34-36,38-43,48-208,228-239,241-324
+  s_0e34dd3924f98e::t_02e269c3331e60 6,33,37,44-47,209-227,240
+.github/AGENTS.md
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-7
+.github/ISSUE_TEMPLATE/bug.yml
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-54
+.github/dependabot.yml
+  s_0e34dd3924f98e::t_b3137f12b6a584 1-6
+CONTRIBUTING.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-19
+GEMINI.md
+  s_0e34dd3924f98e::t_af5d67573903d1 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "64f22bd541c9aad53574246056902451740ca352",
+  "prompts": {},
+  "sessions": {
+    "s_0e34dd3924f98e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11b59-d5a5-7443-a2d6-e4ca8ecadec0",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Subhadip Ghoshal <sghoshal.tech@gmail.com>"
+    }
+  }
+}
