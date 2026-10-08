@@ -19,12 +19,14 @@ Area, type, priority, and execution labels make the backlog usable independently
 
 ## Project setup status
 
-At bootstrap, repository access was verified, but the available GitHub CLI credential lacked the `project` scope and could not read or update Project 2. The items, fields, and views below are the intended configuration; they are not claimed as configured.
+Project 2 is linked to `subhadipghoshal/chimken`, and all 13 bootstrap issues
+are present. The live configuration was verified on 2026-10-08 with the
+`project`-scoped GitHub CLI credential.
 
 | Field | Values |
 | --- | --- |
-| Status | Preserve existing options; target Todo, In Progress, Review, Done |
-| Type | Epic, Feature, Bug, Research, Experiment, Maintenance |
+| Status | Existing options preserved: Todo, In progress, Done |
+| Work type | Epic, Feature, Bug, Research, Experiment, Maintenance |
 | Area | Orchestration, Knowledge, Evaluation, Workflows, OSS, Infrastructure |
 | Priority | P0, P1, P2, P3 |
 | Execution | Human, Agent, Collaborative |
@@ -37,6 +39,13 @@ At bootstrap, repository access was verified, but the available GitHub CLI crede
 | Experiments | Experiments and research, with explicit evidence and stop conditions |
 | Agent Queue | Open `execution:agent` tasks, with issue-defined scope and validation |
 
-To finish setup, authorize GitHub CLI with `gh auth refresh -h github.com -s project`, then link this repository, add the existing issues, and apply the fields and views while preserving existing Project content. Update this status after verifying the live configuration. Do not store access tokens in Git or public issues.
+The live Project also retains the existing Current iteration and My items
+views. GitHub reserves the exact custom field name `Type`, so the equivalent
+single-select field is named `Work type`. The Experiments view filters
+`label:type:experiment OR label:type:research`; Agent Queue filters
+`is:open label:execution:agent`. No existing Project content was deleted or
+rewritten. Package manifests remain at version `0.1.0`; no registry or GitHub
+release publication was authorized or performed. Do not store access tokens in
+Git or public issues.
 
 Start with the evaluation baseline and one useful workflow. Keep paid calls disabled until a maintainer sets a budget, and record operational feedback before expanding infrastructure or autonomy.

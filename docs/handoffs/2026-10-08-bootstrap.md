@@ -8,7 +8,12 @@ Date: 2026-10-08. This handoff preserves the historical integration checkpoint a
 - Fresh independent Terra review found no actionable findings. [Hosted CI passed](https://github.com/subhadipghoshal/chimken/actions/runs/37779614295): Quality, Python 3.12 tests, and Python 3.14 tests, including distribution license validation.
 - All original writer worktrees and the packaging/handoff follow-ups have been assimilated. Worktrees remain available for inspection. No release or package registry publication was performed.
 - All agent outcomes are recorded here, including the incomplete first review and the completed replacement review. The local baseline has 53 passing tests and 18 passing synthetic evaluation cases with no model calls.
-- Project 2 fields, views, and memberships remain pending because the current credential lacks Project permission. The 13 planning issues are live. Private vulnerability reporting, secret scanning, and push protection were reverified as enabled after publication.
+- Project 2 is linked to `subhadipghoshal/chimken`, all 13 planning issues are
+  present, and the documented fields and views were configured with the
+  project-scoped GitHub CLI credential. GitHub reserved the exact custom field
+  name `Type`, so the equivalent field is named `Work type`. Private
+  vulnerability reporting, secret scanning, and push protection were
+  reverified as enabled after publication.
 
 ## Historical checkpoint at 64f22bd
 
@@ -151,7 +156,11 @@ Thirteen open issues were created and verified:
 
 Fifteen labels describe six areas, four work types, three execution modes, and two priorities. Existing default labels were preserved. Issue #13 is the scoped agent task; its label is not permission to execute other work.
 
-Project 2 configuration remains blocked because the available GitHub CLI credential lacks the `project` scope. The in-app browser was signed out. No Project fields, views, item memberships, visibility, or workflows were changed. The desired configuration is documented in `docs/planning.md`.
+Project 2 configuration is complete for the documented scope. The repository
+is linked, the 13 existing issues are present, and the additive fields and
+views are recorded in `docs/planning.md`. The exact custom field name `Type`
+is reserved by GitHub, so the equivalent field is named `Work type`. Existing
+Project content was preserved; no visibility or workflow changes were made.
 
 ## Continuation after the checkpoint
 
