@@ -1,0 +1,43 @@
+.editorconfig
+  s_0e34dd3924f98e::t_728854736a4c12 1-13
+apps/lab/pyproject.toml
+  s_0e34dd3924f98e::t_728854736a4c12 1-18
+packages/oss-triage/src/chimken_oss_triage/policy.py
+  s_0e34dd3924f98e::t_728854736a4c12 1-97
+apps/lab/src/chimken_lab/cli.py
+  s_0e34dd3924f98e::t_728854736a4c12 1-107
+.gitignore
+  s_0e34dd3924f98e::t_728854736a4c12 1-44
+packages/oss-triage/pyproject.toml
+  s_0e34dd3924f98e::t_728854736a4c12 1-12
+evals/oss-triage.json
+  s_0e34dd3924f98e::t_4b25e3b8cceee1 1-307
+packages/oss-triage/src/chimken_oss_triage/__init__.py
+  s_0e34dd3924f98e::t_728854736a4c12 1-6
+apps/lab/src/chimken_lab/__init__.py
+  s_0e34dd3924f98e::t_728854736a4c12 1-4
+workflows/oss-contributions/example.json
+  s_0e34dd3924f98e::t_4b25e3b8cceee1 1-12
+justfile
+  s_0e34dd3924f98e::t_728854736a4c12 1-24
+pyproject.toml
+  s_0e34dd3924f98e::t_728854736a4c12 1-32
+uv.lock
+  s_0e34dd3924f98e::t_ae895249bb0240 1-308
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a92763ca1a71257f8da9a8c554c994044e447f87",
+  "prompts": {},
+  "sessions": {
+    "s_0e34dd3924f98e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11b59-d5a5-7443-a2d6-e4ca8ecadec0",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Subhadip Ghoshal <sghoshal.tech@gmail.com>"
+    }
+  }
+}
