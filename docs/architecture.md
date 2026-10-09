@@ -26,7 +26,7 @@ Both components are real installable workspace members with a shared lockfile. T
 | OSS contributions | Observe repositories, normalize issues, triage, prepare work, and learn from review | Only offline recommendation is implemented. Watchers, deduplication, isolated execution, publication, and PR monitoring remain later steps. |
 | Infrastructure | Reproducible environments, observability, artifact retention, and operating limits | Current: local uv tooling and CI. Cloud, containers, Kubernetes, and homelab services require a measured workload and budget. |
 
-Inspect AI, gh-aw, OpenSWE, CrewAI, and LangGraph are candidates for evaluation, not selected dependencies. Harness roles are hypotheses to test, not permanent assignments based on provider reputation. The same comparison records model, harness, tools, skills, context, instructions, limits, and human corrections.
+Inspect AI, gh-aw, OpenSWE, CrewAI, and LangGraph are candidates for evaluation, not selected dependencies. So are Orca (stablyai/orca) as a dispatcher for parallel harness sessions and Jev (TypeSafe) as a routing classifier; see #51 and the routing plan pending in draft PR #52 (`docs/architecture/orca-routing.md`). Harness roles are hypotheses to test, not permanent assignments based on provider reputation. The same comparison records model, harness, tools, skills, context, instructions, limits, and human corrections.
 
 ## Public source and private operation
 

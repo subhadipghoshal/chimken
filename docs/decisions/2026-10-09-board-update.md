@@ -64,3 +64,7 @@ The maintainer now has a SuperGrok (xAI Grok) subscription alongside Claude, Cha
 - The private starting plan's AI subscription section now has a SuperGrok row and a Grok side for context sync.
 
 No Grok capability was assumed. There is no `GROK.md` adapter, because Grok's discovery convention for repository instructions is unverified; #46 decides whether one is needed.
+
+## Later on 2026-10-09: Orca and Jev listed as candidates
+
+From the Orca routing plan (#51, draft PR #52), Orca (stablyai/orca) as a dispatcher and Jev (TypeSafe) as a routing classifier were added to the evaluation candidates in `docs/architecture.md` and the README. They are candidates only, not selected dependencies. The link to `docs/architecture/orca-routing.md` stays a plain path until PR #52 merges, so this branch has no broken link.
