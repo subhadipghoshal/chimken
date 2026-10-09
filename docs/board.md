@@ -2,7 +2,7 @@
 
 Status: proposal. #20 (ADR 006) accepts or changes it. Until then, `AGENTS.md` and `docs/planning.md` still apply: Issues are canonical, and the Project organizes them.
 
-The maintainer's rule is that GitHub is the single source of truth for code and that the GitHub Project ([Chimken HQ | The Grand Coop](https://github.com/users/subhadipghoshal/projects/2)) is the state management for project state, shared by Claude, ChatGPT/Codex and Gemini harnesses. This page explains how to make that rule work when most harnesses can write issues but not Project fields.
+The maintainer's rule is that GitHub is the single source of truth for code and that the GitHub Project ([Chimken HQ | The Grand Coop](https://github.com/users/subhadipghoshal/projects/2)) is the state management for project state, shared by Claude, ChatGPT/Codex, Gemini and Grok harnesses. This page explains how to make that rule work when most harnesses can write issues but not Project fields.
 
 ## Layers and precedence
 
@@ -49,5 +49,5 @@ There is deliberately no per-vendor "suggested harness" field. ADR 003 treats ha
 
 ## Known gaps
 
-- Projects v2 fields can be written only from the web UI or by a credential with the `project` scope. No such credential is configured (#22). The capability table in #20 must mark each harness's access as verified or unverified.
+- Projects v2 fields can be written only from the web UI or by a credential with the `project` scope. No such credential is configured (#22). The capability table in #20 must mark each harness's access as verified or unverified. Grok (SuperGrok, added 2026-10-09) starts with every cell unverified.
 - The 2026-10-09 session could not read Project 2 and had no Projects API tool. Its board update therefore went through issues, labels and sub-issues only.

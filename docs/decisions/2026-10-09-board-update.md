@@ -54,3 +54,13 @@ What changed in response:
 Kept as is: issues still describe capability rather than household specifics, because issue text in a public repository is public. The difference now is that the specifics have a defined home in the data layer.
 
 The maintainer's private starting plan, which lives outside this repository, was revised the same day to match ADR 004. Its private-repo wording became the public `chimken` repository plus the data isolation layer. It now uses `docs/decisions/` and `ops/` with placeholders. Secrets are never kept in Git, and agents never run on the live host.
+
+## Later on 2026-10-09: SuperGrok added as an AI capability
+
+The maintainer now has a SuperGrok (xAI Grok) subscription alongside Claude, ChatGPT/Codex and Gemini. The README already listed Grok among the harnesses that share `AGENTS.md`. What changed:
+
+- `docs/context.md` lists the four AI subscriptions, and `docs/board.md` names Grok among the harnesses sharing board state, with every capability cell unverified.
+- Issues #20 and #49 add Grok to their capability and access matrices, and their criteria now verify Grok's access the same way as the other harnesses'. #26 and #27 cover four vendor accounts instead of three. #23 adds Grok's instructions and the paste-back habit. #46 adds a Grok usage boundary until its integrations are verified.
+- The private starting plan's AI subscription section now has a SuperGrok row and a Grok side for context sync.
+
+No Grok capability was assumed. There is no `GROK.md` adapter, because Grok's discovery convention for repository instructions is unverified; #46 decides whether one is needed.
