@@ -2,6 +2,10 @@
 
 GitHub Issues are the canonical work records. [Chimken HQ | The Grand Coop](https://github.com/users/subhadipghoshal/projects/2) is the existing planning Project. Do not create a replacement Project.
 
+## 2026-10-09 update
+
+Issues #18 to #46 add the starting plan's decision gates, Phase 0 hosting foundation (#25) and Phase 1 household domains (#38). The change log is [docs/decisions/2026-10-09-board-update.md](decisions/2026-10-09-board-update.md), the review is [docs/reviews/2026-10-09-adversarial-review.md](reviews/2026-10-09-adversarial-review.md), and the proposed board state model is [docs/board.md](board.md). Current state lives in [docs/context.md](context.md).
+
 ## Bootstrap backlog
 
 The epics and starter issues below are live. Starter tasks are linked as native sub-issues and in the epic checklists.
