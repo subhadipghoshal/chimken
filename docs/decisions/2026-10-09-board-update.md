@@ -52,3 +52,5 @@ What changed in response:
 - Re-evaluated the review findings that depended on a private repository; see the re-evaluation section of [the review](../reviews/2026-10-09-adversarial-review.md).
 
 Kept as is: issues still describe capability rather than household specifics, because issue text in a public repository is public. The difference now is that the specifics have a defined home in the data layer.
+
+The maintainer's private starting plan, which lives outside this repository, was revised the same day to match ADR 004. Its private-repo wording became the public `chimken` repository plus the data isolation layer. It now uses `docs/decisions/` and `ops/` with placeholders. Secrets are never kept in Git, and agents never run on the live host.
