@@ -6,4 +6,4 @@ Each entry states what changed, why, what was proposed but not applied, and what
 
 | Date | Entry |
 | --- | --- |
-| 2026-10-09 | [Board update from the starting plan, plus adversarial review](2026-10-09-board-update.md) |
+| 2026-10-09 | [Board update from the starting plan, plus adversarial review, and the data isolation invariant](2026-10-09-board-update.md) |

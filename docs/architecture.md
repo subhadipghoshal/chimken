@@ -30,6 +30,8 @@ Inspect AI, gh-aw, OpenSWE, CrewAI, and LangGraph are candidates for evaluation,
 
 ## Public source and private operation
 
+The repository is public by design and holds planning, execution and operations configuration ([ADR 004](adr/004-public-repository-and-data-isolation.md)). Protection comes from a data isolation layer: GitHub Projects for task state, Notion and Google Drive for personal information, and host filesystems plus SQLite or Postgres for app data. Repository configuration carries placeholders, and real values are resolved from that layer at deploy time.
+
 Git stores source, small curated synthetic fixtures, public configuration, and reviewed architecture decisions. Household content, emails, medical or financial records, credentials, execution state, raw traces, databases, and large generated artifacts stay in access-controlled storage outside this checkout. External OSS projects use their own repositories and isolated workspaces.
 
 Ignoring a path is an accident-prevention measure, not an access-control boundary. A future live connector needs scoped credentials, explicit data access and retention, bounded retries and cost, and a separate authorization check before side effects. Retrieved text is data, not instructions. The current `agent_candidate` route is only a suggestion for reviewed planning.
@@ -45,3 +47,4 @@ GitHub issues are the canonical work records; the existing Project provides view
 - [ADR 001: modular monorepo and data boundary](adr/001-modular-monorepo-and-data-boundary.md)
 - [ADR 002: runnable offline baseline and reuse](adr/002-runnable-offline-baseline-and-reuse.md)
 - [ADR 003: evaluations and bounded autonomy](adr/003-evaluations-and-bounded-autonomy.md)
+- [ADR 004: public repository with a data isolation layer](adr/004-public-repository-and-data-isolation.md)

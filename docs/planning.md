@@ -4,7 +4,7 @@ GitHub Issues are the canonical work records. [Chimken HQ | The Grand Coop](http
 
 ## 2026-10-09 update
 
-Issues #18 to #46 add the starting plan's decision gates, Phase 0 hosting foundation (#25) and Phase 1 household domains (#38). The change log is [docs/decisions/2026-10-09-board-update.md](decisions/2026-10-09-board-update.md), the review is [docs/reviews/2026-10-09-adversarial-review.md](reviews/2026-10-09-adversarial-review.md), and the proposed board state model is [docs/board.md](board.md). Current state lives in [docs/context.md](context.md).
+Issues #18 to #50 add the starting plan's decision gates, Phase 0 hosting foundation (#25) and Phase 1 household domains (#38). The change log is [docs/decisions/2026-10-09-board-update.md](decisions/2026-10-09-board-update.md), the review is [docs/reviews/2026-10-09-adversarial-review.md](reviews/2026-10-09-adversarial-review.md), and the proposed board state model is [docs/board.md](board.md). Current state lives in [docs/context.md](context.md). Sensitive task detail belongs in the data layer, not in public issues ([ADR 004](adr/004-public-repository-and-data-isolation.md)).
 
 ## Bootstrap backlog
 

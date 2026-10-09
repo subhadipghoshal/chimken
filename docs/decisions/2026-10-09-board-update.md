@@ -29,9 +29,26 @@ Requested by the maintainer: rename context to Chimken, update the board from th
 - Pause #2, #4, #6, #10 and #13 at P2 while Phase 0 and 1 run.
 - Raise #11 to P1 once #18 is accepted, and widen #12 to cover VM cost and workload.
 - Add one sentence to #7 limiting it to agent workflow rehearsal.
-- Create the private operations repository recommended in #19.
+- ~~Create the private operations repository recommended in #19.~~ Dropped after the invariant change below.
 - Configure Project 2 fields, views and built-in workflows (#22). This needs a `project`-scoped credential that this session does not have.
 
 ## Not changed
 
 No existing issue was closed, deleted or relabeled. No Project fields, views or memberships were touched. The Project's auto-add workflow is unconfirmed, so new issues may not appear on the board until #22 is done or they are added by hand.
+
+## Later on 2026-10-09: plan invariant change
+
+The maintainer changed the plan invariants. The repository is public and stays public, and planning, execution and operations may all live in it. Protection moves from repository visibility to a data isolation layer: GitHub Projects for task state, Notion and Google Drive for personal information, host filesystems and SQLite or Postgres for app data, and possibly other connected sources. Sensitive information belongs in that layer, never in the repository.
+
+What changed in response:
+
+- Recorded the invariant as [ADR 004](../adr/004-public-repository-and-data-isolation.md) and added it to `AGENTS.md` and `docs/architecture.md`. Hosting approval (#18) moves from ADR 004 to ADR 005.
+- Rewrote #19 from "public/private boundary, recommend a private `chimken-ops` repository" to "ADR 004: public repository with a data isolation layer". The private repository idea is dropped.
+- Widened #27 into data classification plus a store map, so every data class has a home in the data layer.
+- Raised #24 (content scanning) to P0 and extended it to issue and PR text, because scanning is now the main safety net.
+- Added #48 (operations config in `ops/` with placeholders resolved from the data layer), #49 (data-layer access boundaries per harness and connector) and #50 (backups of the hosted data-layer stores).
+- Edited #18, #20, #22, #23, #25, #28 to #32, #35, #37, #38, #40, #43, #44 and #46 so they point at `ops/` and the data layer instead of a private repository. #37 now deploys from this repository, using a protected environment that agent workflows cannot reference, and keeps configuration out of public logs.
+- Struck through the outdated parts of the change note on #11, and added a note on #1.
+- Re-evaluated the review findings that depended on a private repository; see the re-evaluation section of [the review](../reviews/2026-10-09-adversarial-review.md).
+
+Kept as is: issues still describe capability rather than household specifics, because issue text in a public repository is public. The difference now is that the specifics have a defined home in the data layer.
