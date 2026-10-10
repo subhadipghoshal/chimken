@@ -37,9 +37,9 @@ state, and external OSS clones stay outside this repository.
 
 No provider service, live agent runner, network watcher, state database, or
 cloud provisioner is implemented. Future candidates for evaluation include
-Inspect AI, gh-aw, OpenSWE, CrewAI, and LangGraph. Mentioning them is not a
-claim of current support or a selection decision. Kubernetes, cloud, and a
-homelab come only after a workload proves the need.
+Inspect AI, gh-aw, OpenSWE, CrewAI, LangGraph, Orca and Jev (#51). Mentioning
+them is not a claim of current support or a selection decision. Kubernetes,
+cloud, and a homelab come only after a workload proves the need.
 
 ## Collaboration
 
