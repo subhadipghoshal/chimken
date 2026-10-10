@@ -175,13 +175,13 @@ Each phase ships on its own and is only started when the previous exit criteria 
 | 1 | Merge this document and its four review notes | Records the analysis and its sources where every harness reads |
 | 2 | Add `docs/adr/008-observability-stack.md` (proposed) covering OTLP-only ingestion, telemetry in Postgres first, the move triggers, and the authority layers | Makes the decision reviewable; 008 because 004 to 007 are taken or proposed |
 | 3 | `docs/architecture.md`, Infrastructure row: link this document | Hand to the PR #47 owner rather than editing it here |
-| 4 | New issues, one per phase 0 to 3, under the matching epic, each with the exit criteria above; phases 4 and 5 as a single parked issue listing the triggers | Makes the work trackable without committing to scale-out |
+| 4 | New issues, one per phase 0 to 3, under the observability epic #58, after the gated review in #60 passes, each with the exit criteria above; phases 4 and 5 as a single parked issue listing the triggers | Makes the work trackable without committing to scale-out |
 | 5 | Link #50 and #33 so the `telemetry` schema is in backups and the restore drill | Telemetry not restored is telemetry lost |
 | 6 | Link the phase 3 issue to #51 | The router consumes the scorecard |
 
-## 9. Open points for Subhadip
+## 9. Decisions and open points
 
-- Start at phase 0 and 1 as described, or skip ahead to ClickHouse because a product is the near-term goal? Recommended: phase 0 and 1, since the schema seam keeps the ClickHouse move a copy job.
+- Decided 2026-10-10: start on Postgres (phases 0 and 1); ClickHouse comes later as a copy job when a section 3.2 trigger fires.
 - May hosted models (Claude, Codex, Gemini, Grok) see redacted telemetry for triage, or local models only? Recommended: local only until phase 2 measures how much quality that costs.
 
 ## 10. Known gaps
