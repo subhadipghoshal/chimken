@@ -10,11 +10,11 @@ Facts are cited to the source checked on 2026-10-09. Statements marked *inferenc
 
 ### Orca
 
-Several projects share the name. The one that fits the request is **stablyai/orca**, because it is the only candidate that names all four harnesses.
+Several projects share the name. The maintainer confirmed on 2026-10-10 that the intended one is **stablyai/orca**, which is also the only candidate that names all four harnesses.
 
 | Candidate | What it is | Fit | Confidence |
 | --- | --- | --- | --- |
-| [stablyai/orca](https://github.com/stablyai/orca) ("Orca ADE", [onorca.dev](https://www.onorca.dev)) | MIT-licensed desktop app plus CLI for running many CLI coding agents in parallel, each in its own git worktree. Supported agents include Claude Code, Codex, Grok, Antigravity and "any CLI agent". | Direct fit | High that this is the intended tool |
+| [stablyai/orca](https://github.com/stablyai/orca) ("Orca ADE", [onorca.dev](https://www.onorca.dev)) | MIT-licensed desktop app plus CLI for running many CLI coding agents in parallel, each in its own git worktree. Supported agents include Claude Code, Codex, Grok, Antigravity and "any CLI agent". | Direct fit | Confirmed by the maintainer |
 | [orca-cli/orca](https://github.com/orca-cli/orca) | Go binary with SQLite run state, worktree isolation, a task DAG ("pods") and an MCP server. Names Claude Code, Codex, Gemini CLI and others. | Same idea, but the repository showed 0 stars and 5 commits, and says interfaces may change before v1.0 | Low as a dependency; noted as an alternative |
 | Others named Orca (other small GitHub repos, Microsoft's Orca research models, Orca Security, Orca AI maritime) | Unrelated or unverified | None | Not researched beyond the name |
 
@@ -36,7 +36,7 @@ What Orca does **not** do, per the same docs: it has no automatic agent or model
 
 ### Jev
 
-The request says "jev based classifier". This most likely means **Jev by TypeSafe**, a hosted "System One" model that answers typed questions with probabilities instead of generating text. *Please confirm this reading* (open question 1). If you meant something else, sections 3 and 4 change but sections 2, 5 and 6 stand.
+The request says "jev based classifier". The maintainer confirmed on 2026-10-10 that this means **Jev by TypeSafe**, a hosted "System One" model that answers typed questions with probabilities instead of generating text.
 
 Verified facts (sources: [LiteLLM benchmark](https://docs.litellm.ai/blog/jev-auto-router-benchmark), [Glean](https://www.glean.com/blog/jev-zero-shot-classifier), [Arize](https://arize.com/blog/typesafe-jev-llm-judge/), [Promptfoo provider docs](https://www.promptfoo.dev/docs/providers/typesafe/)):
 
@@ -167,7 +167,7 @@ Stop condition: if Jev does not beat the rules baseline on route accuracy and un
 | Agent approves or closes its own work | Bypasses review | Branch protection and human approval (#21) |
 | Orca orchestration API changes (experimental) | Dispatcher breaks | Pin the Orca version; keep the dispatcher thin; a single-agent fallback path that needs no orchestration feature |
 | Orca host off or asleep | Nothing runs | Accept for phase 1 (laptop); revisit only with a measured need (#12) |
-| Vendor terms on automated use of subscriptions | Account risk | Verify each vendor's terms before any unattended run (open question 4) |
+| Vendor terms on automated use of subscriptions | Account risk | Verify each vendor's terms before any unattended run (open question 2) |
 | Cost runaway | Unexpected spend | ADR 003 spend cap before any paid call, including Jev; per-day dispatch cap; fan-out limited to 2 |
 
 ## 6. Data isolation implications (ADR 004, #49)
@@ -186,7 +186,7 @@ Each step is gated; none of them is authorized by this document.
 | Step | What | Gate before starting | Annotation |
 | --- | --- | --- | --- |
 | A | This document and tracking issue #51 | None | Planning only; done in this PR |
-| B | Confirm the Jev reading and Orca choice; record Orca and Jev as evaluation candidates in `docs/architecture.md` | Maintainer answer to open questions 1 and 2 | `docs/architecture.md` is being edited in PR #47, so that line is handed to that PR's owner |
+| B | Record Orca and Jev as evaluation candidates in `docs/architecture.md` | None; both readings were confirmed on 2026-10-10 | `docs/architecture.md` is being edited in PR #47, so that line is handed to that PR's owner |
 | C | Install Orca locally with telemetry off; run one public synthetic task through two harnesses in parallel | #2 harness comparison method; #46 trigger safety | Fits #2 as its "alternative configuration"; no paid API calls |
 | D | Build the rules-only router and the labelled synthetic eval set, offline | Step C shows Orca is worth keeping | New code only if it earns an owner (ADR 002) |
 | E | Add Jev as Stage 1 and compare with the rules baseline | Spend cap set for the Jev key (ADR 003); key stored per ADR 004 | Drop Jev if it does not beat the baseline |
@@ -195,10 +195,8 @@ Each step is gated; none of them is authorized by this document.
 
 ## 8. Open questions
 
-1. Does "jev" mean TypeSafe's Jev? If it meant something else (for example "eval-based"), Stage 1 becomes a rules or small-LLM step scored on the same eval.
-2. Is stablyai/orca the Orca you meant?
-3. Where should the dispatcher run long term: the dev laptop only, or a separate always-on machine that holds no household data?
-4. Do Anthropic, OpenAI, Google and xAI terms allow unattended, parallel use of the personal subscriptions through a tool like Orca? Not verified here.
-5. Which Grok CLI auth path does SuperGrok cover, and does Grok accept model or effort selection? The [Grok CLI page](https://x.ai/cli) mentions a headless mode but documents neither auth nor flags.
-6. Is a non-enterprise Jev account acceptable given the unstated retention, if only public text is sent?
-7. Should the route decision record live as an issue comment (public, visible on the board) or only in the data layer?
+1. Where should the dispatcher run long term: the dev laptop only, or a separate always-on machine that holds no household data?
+2. Do Anthropic, OpenAI, Google and xAI terms allow unattended, parallel use of the personal subscriptions through a tool like Orca? Not verified here.
+3. Which Grok CLI auth path does SuperGrok cover, and does Grok accept model or effort selection? The [Grok CLI page](https://x.ai/cli) mentions a headless mode but documents neither auth nor flags.
+4. Is a non-enterprise Jev account acceptable given the unstated retention, if only public text is sent?
+5. Should the route decision record live as an issue comment (public, visible on the board) or only in the data layer?
